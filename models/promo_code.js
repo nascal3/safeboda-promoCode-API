@@ -1,28 +1,39 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../startup/db');
+const AreaModel = require('./area');
 
-const User = sequelize.define('user', {
+const User = sequelize.define('promocode', {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
     allowNull: false,
     primaryKey: true,
   },
-  first_name: Sequelize.STRING,
-  last_name: Sequelize.STRING,
-  role: {
-    type: Sequelize.ENUM,
-    allowNull: false,
-    values: ['user', 'editor', 'admin'],
-    defaultValue: 'user'
+  area_id: {
+    type: Sequelize.INTEGER,
+    allowNull: true,
+    references: {
+      model: AreaModel,
+      key: AreaModel.id
+    }
   },
-  email: {
+  code: {
     type: Sequelize.STRING,
-    unique: true,
+    allowNull: false,
+    unique: true
+  },
+  state: {
+    type: Sequelize.ENUM,
+    values: ['active', 'inactive'],
+    allowNull: false,
+    defaultValue: 'inactive'
+  },
+  amount: {
+    type: Sequelize.INTEGER,
     allowNull: false
   },
-  password: {
-    type: Sequelize.TEXT,
+  exp_date: {
+    type: Sequelize.DATE,
     allowNull: false
   }
 });
