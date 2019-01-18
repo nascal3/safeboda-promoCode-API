@@ -1,0 +1,6 @@
+{
+  "jwtPrivateKey": "123456",
+  "database": "node_mysql",
+  "user": "root",
+  "password": ""
+}
