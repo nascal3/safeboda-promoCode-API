@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../startup/db');
 
-const User = sequelize.define('area', {
+const area = sequelize.define('area', {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -18,4 +18,4 @@ const User = sequelize.define('area', {
   }
 });
 
-module.exports = User;
+module.exports = area;

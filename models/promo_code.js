@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const sequelize = require('../startup/db');
 const AreaModel = require('./area');
 
-const User = sequelize.define('promocode', {
+const promo = sequelize.define('promocode', {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -38,4 +38,11 @@ const User = sequelize.define('promocode', {
   }
 });
 
-module.exports = User;
+promo.belongsTo(AreaModel, {
+  foreignKey: 'area_id'
+});
+AreaModel.hasMany(promo, {
+  foreignKey: 'area_id'
+});
+
+module.exports = promo;

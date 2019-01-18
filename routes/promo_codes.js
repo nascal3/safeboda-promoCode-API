@@ -7,20 +7,21 @@ const router = express.Router();
 // GET all promo code listing
 router.get('/', async (req, res) => {
 
-  const allUsers = await Promo.findAll();
-  res.send(allUsers);
+  const allCodes = await Promo.findAll({
+    include: [Area]
+  });
+
+  res.send(allCodes);
 });
 
-// GET all radius/area listing
+// GET all radius/areas polygons listing
 router.get('/radius', async (req, res) => {
 
-  const allAreas = await Area.findAll();
-  // console.log(allAreas[0].dataValues.radius);
-  let txt_radius = allAreas[0].dataValues.radius;
+  const allAreas = await Area.findAll({
+    include: [Promo]
+  });
 
-  res.send(JSON.parse(txt_radius));
+  res.send(allAreas);
 });
-
-
 
 module.exports = router;
