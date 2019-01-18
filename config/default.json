@@ -1,6 +1,5 @@
 {
-  "jwtPrivateKey": "123456",
-  "database": "node_mysql",
+  "database": "safeboda",
   "user": "root",
   "password": ""
 }
