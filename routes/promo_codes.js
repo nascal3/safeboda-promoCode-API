@@ -87,14 +87,17 @@ router.get('/active', async (req, res) => {
 // Edit promo code
 router.post('/edit/:id', async (req, res) => {
 
-  let exist = await areaRadiusExist(req.body.area_id);
-  if (!exist) return res.status(400).send('The area radius set does not exists!');
+  let data = { state: req.body.state };
+
+  if (req.body.area_id) {
+    let exist = await areaRadiusExist(parseInt(req.body.area_id));
+    if (!exist) return res.status(400).send('The area radius set does not exists!');
+
+    data = { area_id: parseInt(req.body.area_id), state: req.body.state };
+  }
 
   const results = await Promo.update(
-      {
-        area_id: req.body.area_id,
-        state: req.body.state
-      },
+      data,
       {
         where: {
           id: req.body.id
