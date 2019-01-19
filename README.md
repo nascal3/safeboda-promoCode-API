@@ -17,15 +17,15 @@ _"active_days" - Amount of days promotion will be active_.<br>
  	"active_days": 15
  }`
 
-##### View/list all promo codes
+#### View/list all promo codes
 **http://.../api/promocode/all**<br>
 Get list using GET method.
 
-##### View/list all active promo codes
+#### View/list all active promo codes
 **http://.../api/promocode/active**<br>
 Get list using GET method.
 
-##### Edit  promo code (activate/deactivate promo code)
+#### Edit  promo code (activate/deactivate promo code)
 **http://.../api/promocode/edit/**<br>
 Input values using POST method, _'area_id'_  is an optional field :
 <br>
@@ -38,7 +38,7 @@ _"id" - Unique row/record id number in database of promo code to be edited_.<br>
     "id": 1
   }`
   
-##### View/list all map radius set
+#### View/list all map radius set
   **http://.../api/promocode/radius**<br>
   Get list using GET method.
 
