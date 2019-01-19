@@ -1,6 +1,7 @@
 const express = require('express');
 const Promo = require('../models/promo_code');
 const Area = require('../models/area');
+const validate = require('../validate/validatePromoCode');
 require('express-async-errors');
 const router = express.Router();
 
@@ -111,6 +112,18 @@ router.get('/radius', async (req, res) => {
   });
 
   res.status(200).send(allAreas);
+});
+
+// Validate promotion code
+router.get('/validate', async (req, res) => {
+
+  const promoCode = req.body.code;
+  const start = req.body.start;
+  const destination = req.body.destination;
+  let results = await validate(promoCode, start, destination);
+
+  res.send(results);
+
 });
 
 module.exports = router;
