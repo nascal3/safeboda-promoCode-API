@@ -4,13 +4,31 @@ const Area = require('../models/area');
 require('express-async-errors');
 const router = express.Router();
 
-// Create new area radius
+// Create new map area radius
 router.post('/new', async (req, res) => {
 
   const newRadius = await Area.create({
     area_name: req.body.area_name,
     radius: JSON.stringify(req.body.radius)
   });
+
+  res.status(200).send(newRadius);
+});
+
+// Edit map area radius
+router.post('/edit/:id', async (req, res) => {
+
+  const newRadius = await Area.update(
+    {
+      area_name: req.body.area_name,
+      radius: JSON.stringify(req.body.radius)
+    },
+    {
+      where: {
+        id: req.body.id
+      }
+    }
+  );
 
   res.status(200).send(newRadius);
 });
