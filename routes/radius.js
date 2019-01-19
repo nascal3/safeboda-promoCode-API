@@ -18,11 +18,17 @@ router.post('/new', async (req, res) => {
 // Edit map area radius
 router.post('/edit/:id', async (req, res) => {
 
-  const newRadius = await Area.update(
-    {
+  let data = {area_name: req.body.area_name};
+
+  if (req.body.radius) {
+    data = {
       area_name: req.body.area_name,
       radius: JSON.stringify(req.body.radius)
-    },
+    }
+  }
+
+  const newRadius = await Area.update(
+    data,
     {
       where: {
         id: req.body.id
