@@ -4,7 +4,7 @@ const Area = require('../models/area');
 require('express-async-errors');
 const router = express.Router();
 
-//CHECK EXISTENCE OF AN AREA RADIUS
+// ====CHECK EXISTENCE OF AN AREA RADIUS===
 const areaRadiusExist = (async (id) => {
 
   const exist = await Area.findAll({
@@ -16,17 +16,42 @@ const areaRadiusExist = (async (id) => {
 
 });
 
-// Generate new promo code
+// ===GENERATE UNIQUE PROMO CODE===
+const generatePromoCode = (async () => {
+
+  let genCode = Math.random().toString(36).substring(7);
+  let promoCode = genCode.toUpperCase();
+
+  const exist = await Promo.findAll({
+    where: {
+      code: promoCode
+    }
+  });
+
+  if (exist.length >= 1) {
+    await generatePromoCode();
+  } else {
+    return promoCode;
+  }
+
+});
+
+
+// Generate/create new promo code
 router.post('/new', async (req, res) => {
 
   let exist = await areaRadiusExist(req.body.area_id);
   if (!exist) return res.status(400).send('The area radius set does not exists!');
 
+  let active_days = parseInt(req.body.active_days);
+  const exp_date = new Date(new Date().getTime() + (active_days * 24 * 60 * 60 * 1000));
+
+  let code = await generatePromoCode();
+
   const newCodes = await Promo.create({
     area_id: req.body.area_id,
     code: code,
-    state: state,
-    amount: req.body.amount,
+    amount: parseInt(req.body.amount),
     exp_date: exp_date
   });
 
