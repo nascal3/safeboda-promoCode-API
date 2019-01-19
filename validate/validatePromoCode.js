@@ -15,6 +15,7 @@ const validateCode = (async (promoCode, start, destination) => {
   if (exist.length < 1) return "Code provided does not exist :(";
   if (exist[0].state === 'inactive') return "Code provided is not usable :(";
   if (exist[0].exp_date < new Date()) return "Code provided has expired :(";
+  if (exist[0].area === null) return "Oops! sorry code can not yet be used :(";
 
   const areaRadius = JSON.parse(exist[0].area.radius);
   const startInRange = inside(start, areaRadius);
