@@ -52,7 +52,7 @@ router.post('/new', async (req, res) => {
   let code = await generatePromoCode();
 
   const newCodes = await Promo.create({
-    area_id: req.body.area_id,
+    area_id: parseInt(req.body.area_id),
     code: code,
     amount: parseInt(req.body.amount),
     exp_date: exp_date
