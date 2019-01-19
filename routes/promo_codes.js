@@ -30,6 +30,13 @@ router.get('/active', async (req, res) => {
 // Edit promo code
 router.post('/edit/:id', async (req, res) => {
 
+  const exist = await Area.findAll({
+    where: {
+      id: req.body.area_id
+    }
+  });
+  if (exist.length < 1) return res.status(400).send('The following area radius does not already exists!');
+
   const results = await Promo.update(
       {
         area_id: req.body.area_id,
