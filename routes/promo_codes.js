@@ -41,8 +41,10 @@ const generatePromoCode = (async () => {
 // Generate/create new promo code
 router.post('/new', async (req, res) => {
 
-  let exist = await areaRadiusExist(req.body.area_id);
-  if (!exist) return res.status(400).send('The area radius set does not exists!');
+  if (req.body.area_id) {
+    let exist = await areaRadiusExist(req.body.area_id);
+    if (!exist) return res.status(400).send('The area radius set does not exists!');
+  }
 
   let active_days = parseInt(req.body.active_days);
   const exp_date = new Date(new Date().getTime() + (active_days * 24 * 60 * 60 * 1000));
