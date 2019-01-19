@@ -11,7 +11,7 @@ router.get('/all', async (req, res) => {
     include: [Area]
   });
 
-  res.send(allCodes);
+  res.status(200).send(allCodes);
 });
 
 // GET all active promo code listing
@@ -24,7 +24,26 @@ router.get('/active', async (req, res) => {
     include: [Area]
   });
 
-  res.send(allCodes);
+  res.status(200).send(allCodes);
+});
+
+// Edit promo code
+router.post('/edit/:id', async (req, res) => {
+
+  const results = await Promo.update(
+      {
+        area_id: req.body.area_id,
+        state: req.body.state
+      },
+      {
+        where: {
+          id: req.body.id
+        }
+      }
+  );
+
+  res.status(200).send(results);
+
 });
 
 // GET all radius/areas polygons listing
@@ -34,7 +53,7 @@ router.get('/radius', async (req, res) => {
     include: [Promo]
   });
 
-  res.send(allAreas);
+  res.status(200).send(allAreas);
 });
 
 module.exports = router;
