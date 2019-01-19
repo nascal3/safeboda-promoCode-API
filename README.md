@@ -4,6 +4,10 @@ MYSQL as the database for the project. To run it first create a MYSQL database
 called _'safeboda'_. You can change the database name, username and password 
 in the default.json file in the config folder. The needed tables 
 will automatically be generated when you start the node server. 
+<p>
+A sample SQL database with some values already inserted is under the database folder. 
+You may import it to your databse to test run the API project.  
+</p>
 
 ### Promotion code endpoints
 
