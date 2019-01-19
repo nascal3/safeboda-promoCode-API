@@ -4,7 +4,7 @@ MYSQL as the database for the project.
 
 ### Promotion code endpoints
 
-##### Generate/create promo code
+#### Generate/create promo code
 **http://.../api/promocode/new**<br>
 Input values using POST method, _'area_id'_  is an optional field :
 <br>
