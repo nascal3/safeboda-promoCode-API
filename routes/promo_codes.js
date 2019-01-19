@@ -5,9 +5,22 @@ require('express-async-errors');
 const router = express.Router();
 
 // GET all promo code listing
-router.get('/', async (req, res) => {
+router.get('/all', async (req, res) => {
 
   const allCodes = await Promo.findAll({
+    include: [Area]
+  });
+
+  res.send(allCodes);
+});
+
+// GET all active promo code listing
+router.get('/active', async (req, res) => {
+
+  const allCodes = await Promo.findAll({
+    where: {
+      state: 'active'
+    },
     include: [Area]
   });
 
