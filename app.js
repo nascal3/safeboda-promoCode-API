@@ -9,9 +9,23 @@ const sequelize = require('./startup/db');
 require('./startup/routes')(app);
 
 // CREATE TABLES IF THEY DON'T EXIST
-sequelize.sync().then(result => {
-  const port = process.env.PORT || 3030;
-  app.listen( port, console.log(`listening to port ${port}`));
-}).catch( err => {
-  console.error('Error occurred: ',err.name);
-});
+const startServer = async () => {
+  const result = await sequelize.sync();
+};
+
+(async function() {
+  await startServer();
+})();
+
+const port = process.env.PORT || 3030;
+const server = app.listen( port, console.log(`listening to port ${port}`));
+
+module.exports = server;
+
+// sequelize.sync().then(result => {
+//   const port = process.env.PORT || 3030;
+//   server = app.listen( port, console.log(`listening to port ${port}`));
+// }).catch( err => {
+//   console.error('Error occurred: ',err.name);
+// });
+
