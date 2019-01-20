@@ -127,7 +127,9 @@ router.get('/validate', async (req, res) => {
   const destination = req.body.destination;
   let results = await validate(promoCode, start, destination);
 
-  res.send(results);
+  if (Object.keys(results).length > 1) return res.status(400).send(results);
+
+  res.status(200).send(results);
 
 });
 
