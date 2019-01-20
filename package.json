@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "test": "jest",
     "start": "node app.js"
   },
   "dependencies": {
@@ -13,5 +14,8 @@
     "point-in-polygon": "^1.0.1",
     "sequelize": "^4.42.0",
     "sqlite3": "^4.0.6"
+  },
+  "devDependencies": {
+    "jest": "^23.6.0"
   }
 }
