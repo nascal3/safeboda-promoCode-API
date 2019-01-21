@@ -118,4 +118,5 @@ _"radius" - The polygon coordinate of the area radius_.<br>
    
  ### Run tests
  
- To run tests on the project run on terminal the `npm jest`   command.
+ To run tests on the project run on terminal the `npm jest`   command. Make sure the server 
+ is connected to the database to run the tests.
