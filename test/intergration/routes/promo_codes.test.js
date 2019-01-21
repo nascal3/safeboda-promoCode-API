@@ -66,6 +66,26 @@ describe('/api/promocode', () => {
       });
       expect(res.body).toHaveProperty('code', res.code);
     });
+  });
+
+  describe('GET', () => {
+    it('should return all promotion codes that are active', async () => {
+
+      const exp_date = new Date(new Date().getTime() + (5 * 24 * 60 * 60 * 1000));
+      let code = await Promo.create(
+          {
+            code: 'code',
+            amount: 122,
+            state: 'active',
+            exp_date: exp_date
+          }
+      );
+
+      const res = await request(server).get('/api/promocode/active');
+
+      expect(res.status).toBe(200);
+      expect(res.body.length).toBeGreaterThan(0);
+    });
   })
 
 });
