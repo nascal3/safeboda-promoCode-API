@@ -31,7 +31,7 @@ router.post('/edit/:id', async (req, res) => {
     data,
     {
       where: {
-        id: req.body.id
+        id: req.params.id
       }
     }
   );
