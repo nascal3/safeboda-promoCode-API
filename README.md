@@ -51,11 +51,9 @@ Send input values using POST method, _'area_id'_  is an optional field.
 <br>
 _"area_id" - Area in which the promotion code can be used_.<br>
 _"state" - Change promo code to either 'active' or 'inactive' state_.<br>
-_"id" - Unique row/record id number in database of promo code to be edited_.<br>
  `{
   	"area_id": 3,
-    "state": "active",
-    "id": 1
+    "state": "active"
   }`
   
 #### View/list all map radius set:
@@ -94,12 +92,10 @@ _"radius" - The polygon coordinate of the area radius_.<br>
   Send input values using POST method,  _'area_name'_  is an optional field.
   <br>
   _"area_name" - Area name in which the promotion code can be used_.<br>
-  _"id" - Unique row/record id number in database of radius polygon record to be edited_.<br>
   _"radius" - The polygon coordinate of the area radius_.<br>
   <br>
   `{
    	"area_name": "Ruaka Area",
-   	"id": 3,
    	"radius": [
                  [
                     36.75598,
