@@ -13,7 +13,7 @@ const startServer = async () => {
   try {
     await sequelize.sync();
   } catch (err) {
-    console.error('Error occurred: ',err[[Object.values(err)[0]]]);
+    console.error('Error occurred: ',err);
   }
 
 };
@@ -22,7 +22,7 @@ const startServer = async () => {
   try {
     await startServer();
   } catch (err) {
-    console.error('Error occurred: ',err[[Object.values(err)[0]]]);
+    console.error('Error occurred: ',err);
   }
 
 })();
