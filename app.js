@@ -22,7 +22,7 @@ const startServer = async () => {
   try {
     await startServer();
   } catch (err) {
-    console.error('Error occurred: ',err);
+    console.error('Error occurred: ',err[0]);
   }
 
 })();
