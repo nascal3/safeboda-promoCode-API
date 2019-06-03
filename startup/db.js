@@ -1,10 +1,10 @@
-const config = require('config');
+// const config = require('config');
 const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize(
-    config.get('database'),
-    config.get('user'),
-    config.get('password'),
+    process.env.DATABASE,
+    process.env.USER,
+    process.env.PASSWORD,
     {
       dialect: 'mysql',
       host: 'localhost',
