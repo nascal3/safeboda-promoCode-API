@@ -19,6 +19,7 @@ const startServer = async () => {
 
 const port = process.env.PORT || 3030;
 const server = app.listen( port, console.log(`listening to port ${port}`));
+console.log('-->',  process.env.DATABASE);
 
 module.exports = server;
 
