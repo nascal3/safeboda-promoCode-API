@@ -10,7 +10,12 @@ require('./startup/routes')(app);
 
 // CREATE TABLES IF THEY DON'T EXIST
 const startServer = async () => {
-  await sequelize.sync();
+  try {
+    await sequelize.sync();
+  } catch (err) {
+    console.error('Error occurred: ',err);
+  }
+
 };
 
 (async () => {
