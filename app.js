@@ -14,7 +14,12 @@ const startServer = async () => {
 };
 
 (async function() {
-  await startServer();
+  try {
+    await startServer();
+  } catch (err) {
+    console.error('Error occurred: ',err);
+  }
+
 })();
 
 const port = process.env.PORT || 3030;
