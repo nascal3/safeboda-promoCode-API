@@ -29,10 +29,10 @@ const startServer = async () => {
 
 const port = process.env.PORT || 3030;
 const server = app.listen( port, console.log(`listening to port ${port}`));
-console.log('-->',  process.env.DATABASE);
-console.log('-->',  process.env.USER);
-console.log('-->',  process.env.PASSWORD);
-console.log('-->',  process.env.HOST);
+console.log('DB -->',  process.env.DATABASE);
+console.log('USER -->',  process.env.USER);
+console.log('PASS -->',  process.env.PASSWORD);
+console.log('HOST -->',  process.env.HOST);
 
 module.exports = server;
 
