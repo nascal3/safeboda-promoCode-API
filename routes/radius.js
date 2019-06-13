@@ -1,5 +1,4 @@
 const express = require('express');
-const Promo = require('../models/promo_code');
 const Area = require('../models/area');
 require('express-async-errors');
 const router = express.Router();
